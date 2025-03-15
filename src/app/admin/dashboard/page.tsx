@@ -21,10 +21,8 @@ export default function Dashboard() {
     title: '',
     year: new Date().getFullYear().toString(),
     technique: 'Peinture à l\'huile',
-    dimensions: '',
     image: '',
     description: '',
-    available: true,
     featured: false
   });
   
@@ -81,10 +79,6 @@ export default function Dashboard() {
       newErrors.year = 'L\'année doit être au format YYYY';
     }
     
-    if (!formData.dimensions.trim()) {
-      newErrors.dimensions = 'Les dimensions sont requises';
-    }
-    
     if (!formData.image.trim()) {
       newErrors.image = 'L\'URL de l\'image est requise';
     }
@@ -122,10 +116,8 @@ export default function Dashboard() {
       title: '',
       year: new Date().getFullYear().toString(),
       technique: 'Peinture à l\'huile',
-      dimensions: '',
       image: '',
       description: '',
-      available: true,
       featured: false
     });
   };
@@ -139,10 +131,8 @@ export default function Dashboard() {
         title: artwork.title,
         year: artwork.year,
         technique: artwork.technique,
-        dimensions: artwork.dimensions,
         image: artwork.image,
         description: artwork.description || '',
-        available: artwork.available,
         featured: artwork.featured || false
       });
       
@@ -239,10 +229,8 @@ export default function Dashboard() {
       title: '',
       year: new Date().getFullYear().toString(),
       technique: 'Peinture à l\'huile',
-      dimensions: '',
       image: '',
       description: '',
-      available: true,
       featured: false
     });
   };
@@ -284,9 +272,6 @@ export default function Dashboard() {
           break;
         case 'featured':
           comparison = (a.featured ? 1 : 0) - (b.featured ? 1 : 0);
-          break;
-        case 'available':
-          comparison = (a.available ? 1 : 0) - (b.available ? 1 : 0);
           break;
         default:
           comparison = 0;
@@ -411,10 +396,8 @@ export default function Dashboard() {
                   title: '',
                   year: new Date().getFullYear().toString(),
                   technique: 'Peinture à l\'huile',
-                  dimensions: '',
                   image: '',
                   description: '',
-                  available: true,
                   featured: false
                 });
               }}
@@ -477,7 +460,6 @@ export default function Dashboard() {
                     type="text"
                     id="dimensions"
                     name="dimensions"
-                    value={formData.dimensions}
                     onChange={handleInputChange}
                     className={`w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-artist-accent ${errors.dimensions ? 'border-red-500' : ''}`}
                   />
@@ -539,20 +521,6 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex items-center gap-6">
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="available"
-                      name="available"
-                      checked={formData.available}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 mr-2"
-                    />
-                    <label htmlFor="available" className="text-sm text-white/80">
-                      Disponible
-                    </label>
-                  </div>
-
                   <div className="flex items-center">
                     <input
                       type="checkbox"
@@ -638,9 +606,6 @@ export default function Dashboard() {
                         </select>
                       </td>
                       <td className="px-4 py-3">
-                        <span className={`px-2 py-1 rounded-full text-xs ${artwork.available ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
-                          {artwork.available ? 'Oui' : 'Non'}
-                        </span>
                       </td>
                       <td className="px-4 py-3">
                         <select

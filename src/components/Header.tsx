@@ -42,8 +42,8 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: 'Œuvres', href: '#gallery', isAnchor: true },
-    { name: 'À propos', href: '#about', isAnchor: true },
+    { name: 'Gallery', href: '#gallery', isAnchor: true },
+    { name: 'About', href: '#about', isAnchor: true },
     { name: 'Contact', href: '/contact', isAnchor: false },
   ];
 
@@ -56,7 +56,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <Link href="/" className="relative z-10">
           <h1 className="text-2xl md:text-3xl font-serif font-bold text-white">
-            <span className="text-artist-accent">P</span>ortfolio <span className="text-artist-accent">@</span>Wonderful.Gemini
+            <span className="text-artist-accent">A</span>ileeNyx's Porfolio
           </h1>
         </Link>
 
@@ -67,7 +67,7 @@ const Header = () => {
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href.substring(1))}
-                className="text-artist-text-light hover:text-artist-accent font-bold transition-colors duration-300 font-medium cursor-pointer"
+                className="text-artist-text-light hover:text-artist-accent transition-colors duration-300 font-medium cursor-pointer"
               >
                 {link.name}
               </button>
@@ -87,7 +87,7 @@ const Header = () => {
         <button
           className="md:hidden text-white z-10"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
           {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>

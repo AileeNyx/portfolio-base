@@ -13,6 +13,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -22,26 +23,54 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     
-    // Simuler l'envoi du formulaire
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+    try {
+      // Create form data object
+      const submitData = new FormData();
+      submitData.append('name', formData.name);
+      submitData.append('email', formData.email);
+      submitData.append('subject', formData.subject);
+      submitData.append('message', formData.message);
+      
+      // Add your Web3Forms access key
+      // In production, use environment variables: process.env.WEB3FORMS_ACCESS_KEY
+      submitData.append('access_key', '802fe7b5-4358-4a51-b866-5873ed3dc051');
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: submitData
       });
       
-      // Réinitialiser le message de succès après 5 secondes
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+      const data = await response.json();
+      
+      if (data.success) {
+        // Form submitted successfully
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        // API returned an error
+        setError(data.message || 'An error occurred. Please try again.');
+      }
+    } catch (err) {
+      setError('Connection problem. Please check your internet connection.');
+      console.error('Form submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,11 +80,11 @@ const Contact = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-3 text-white">
-              <span className="text-artist-accent">Contactez</span>-moi
+              <span className="text-artist-accent">Contact</span> Me
             </h2>
             <p className="text-white/80 max-w-2xl mx-auto">
-              Pour toute demande d'information, collaboration ou acquisition d'œuvre, 
-              n'hésitez pas à me contacter via le formulaire ci-dessous.
+              For any request for information, collaboration or acquisition of artwork,
+              feel free to contact me using the form below.
             </p>
           </div>
 
@@ -74,15 +103,21 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <h3 className="text-xl font-serif font-bold mb-2 text-white">Message envoyé !</h3>
-                <p className="text-white/80">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+                <h3 className="text-xl font-serif font-bold mb-2 text-white">Message sent!</h3>
+                <p className="text-white/80">Thank you for your message. I will respond as soon as possible.</p>
               </div>
             ) : (
               <>
+                {error && (
+                  <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-md">
+                    <p className="text-white text-sm">{error}</p>
+                  </div>
+                )}
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                      Nom complet
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -92,7 +127,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-artist-accent/50"
-                      placeholder="Votre nom"
+                      placeholder="Your name"
                     />
                   </div>
                   <div>
@@ -107,30 +142,25 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-artist-accent/50"
-                      placeholder="votre@email.com"
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <label htmlFor="subject" className="block text-sm font-medium text-white mb-2">
-                    Sujet
+                    Subject
                   </label>
-                  <select
+                  <input
+                    type="text"
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-artist-accent/50"
-                  >
-                    <option value="" className="bg-artist-black">Sélectionnez un sujet</option>
-                    <option value="acquisition" className="bg-artist-black">Acquisition d'œuvre</option>
-                    <option value="exposition" className="bg-artist-black">Proposition d'exposition</option>
-                    <option value="collaboration" className="bg-artist-black">Collaboration</option>
-                    <option value="presse" className="bg-artist-black">Demande presse</option>
-                    <option value="autre" className="bg-artist-black">Autre demande</option>
-                  </select>
+                    className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-artist-accent/50"
+                    placeholder="Subject of your message"
+                  />
                 </div>
 
                 <div className="mb-6">
@@ -145,7 +175,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-md bg-white/5 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-artist-accent/50"
-                    placeholder="Votre message..."
+                    placeholder="Your message..."
                   ></textarea>
                 </div>
 
@@ -156,7 +186,7 @@ const Contact = () => {
                     isSubmitting ? 'bg-artist-gray/50 cursor-not-allowed' : 'bg-artist-accent hover:bg-artist-accent/80'
                   }`}
                 >
-                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </>
             )}
@@ -167,4 +197,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

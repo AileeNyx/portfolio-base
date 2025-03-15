@@ -2,8 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { AnimatedTitle } from '@/components/ui/animated-title';
-import Image from 'next/image';
-import { InstagramButton } from '@/components/ui/instagram-button';
 import { ImageSlideshow } from '@/components/ui/ImageSlideshow';
 import { DecorativeFrame, FloatingElement, ArtistSignature } from '@/components/ui/decorative-elements';
 
@@ -30,8 +28,8 @@ const Hero = () => {
           className="order-2 lg:order-1 w-full px-2 sm:px-4 lg:col-span-2"
         >
           <AnimatedTitle 
-            title="Alexandre Nina"
-            subtitle="Artiste plasticienne"
+            title="Aileen Díaz Ramos"
+            subtitle="Digital Artist, Game Dev"
             titleClassName="font-serif font-bold mb-2 leading-tight text-artist-text-light text-3xl sm:text-4xl md:text-5xl lg:text-5xl w-full"
             subtitleClassName="text-xl md:text-2xl mb-4 text-artist-text-light font-serif italic"
             animationType="letter"
@@ -45,8 +43,7 @@ const Hero = () => {
             transition={{ delay: 1.5, duration: 0.8 }}
             className="text-artist-text-light mb-8 max-w-2xl leading-relaxed"
           >
-            Bienvenue dans mon univers artistique où chaque œuvre raconte une histoire unique.
-            Je crée des pièces qui transmettent émotions et sensibilité à travers différentes techniques.
+            Welcome to my portfolio! Here you can check out some of my best artworks and get to know me a little better. I hope you enjoy your visit! 🍂
           </motion.p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
@@ -59,17 +56,17 @@ const Hero = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              Découvrir mes œuvres
+              Take a look at my work!
             </motion.button>
             <motion.div
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.9, duration: 0.5 }}
             >
-              <InstagramButton 
+              {/* <InstagramButton 
                 variant="accent" 
                 instagramUrl="https://www.instagram.com/wonderful.gemini/"
-              />
+              /> */}
             </motion.div>
           </div>
         </motion.div>

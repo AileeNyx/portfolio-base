@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/admin/dashboard/'],
     },
-    sitemap: 'https://portfolio-wonderfulgemini.com/sitemap.xml',
+    sitemap: 'https://aileenyx.com/sitemap.xml',
   };
 } 

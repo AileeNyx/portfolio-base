@@ -13,21 +13,17 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Nina Alexandre',
+    name: 'AileeNyx',
     alternateName: '@Wonderful.Gemini',
-    url: 'https://portfolio-wonderfulgemini.com',
-    image: 'https://portfolio-wonderfulgemini.com/images/selfie-nina.jpg',
-    sameAs: [
-      'https://www.instagram.com/wonderful.gemini/',
-      'https://twitter.com/wonderful_gemini',
-      'https://www.facebook.com/profile.wonderful.gemini',
-    ],
-    jobTitle: 'Artiste plasticienne',
-    description: 'Artiste plasticienne française créant des œuvres expressives dans divers médiums comme la peinture à l\'huile, l\'acrylique et les techniques mixtes.',
-    knowsAbout: ['Art contemporain', 'Peinture à l\'huile', 'Acrylique', 'Techniques mixtes'],
+    url: 'https://aileenyx.com',
+    image: 'https://aileenyx.com/images/portrait.jpg',
+    sameAs: [],
+    jobTitle: 'Artist and Game Dev',
+    description: 'Personal portfolio of Aileenyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!',
+    knowsAbout: ['Art', 'Painting', 'GameDev'],
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://portfolio-wonderfulgemini.com'
+      '@id': 'https://aileenyx.com'
     }
   };
 

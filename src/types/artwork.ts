@@ -7,9 +7,7 @@ export interface Artwork {
   category: string;
   image: string;
   description?: string;
-  available?: boolean;
   featured?: boolean;
-  price?: number;
   createdAt?: string;
   updatedAt?: string;
   technique?: string;

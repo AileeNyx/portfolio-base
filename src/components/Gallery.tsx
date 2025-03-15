@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useArtworks } from '@/contexts/ArtworkContext';
 
 // Techniques disponibles
-const techniques = ['Tous', 'Peinture à l\'huile', 'Acrylique', 'Aquarelle', 'Digital'];
+const techniques = ['All', 'Oil Paint', 'Sketch', 'Digital'];
 
 const Gallery = () => {
   const { artworks, loading, lastUpdate } = useArtworks();
@@ -15,7 +15,7 @@ const Gallery = () => {
   // État pour le mode plein écran de l'image
   const [fullscreenMode, setFullscreenMode] = useState(false);
   // État pour la technique sélectionnée
-  const [selectedTechnique, setSelectedTechnique] = useState('Tous');
+  const [selectedTechnique, setSelectedTechnique] = useState('All');
   // État local pour les œuvres filtrées
   const [filteredArtworks, setFilteredArtworks] = useState(artworks);
 
@@ -27,24 +27,16 @@ const Gallery = () => {
 
   // Filtrer les œuvres par technique lorsque la technique sélectionnée change ou que les artworks sont mis à jour
   useEffect(() => {
-    console.log("Gallery: Mise à jour des œuvres filtrées, timestamp:", lastUpdate);
     
-    const newFilteredArtworks = selectedTechnique === 'Tous'
+    const newFilteredArtworks = selectedTechnique === 'All'
       ? artworks
-      : artworks.filter(artwork => artwork.technique === selectedTechnique);
+      : artworks.filter(artwork => 
+        artwork.technique && artwork.technique.toLowerCase().includes(selectedTechnique.toLowerCase())
+      );
     
     setFilteredArtworks(newFilteredArtworks);
     
     // Afficher un journal des techniques disponibles pour le débogage
-    console.log("Techniques disponibles dans les œuvres:", 
-      [...new Set(artworks.map(artwork => artwork.technique))].join(", "),
-      "- Nombre d'œuvres par technique:", 
-      techniques.map(tech => 
-        tech === 'Tous' 
-          ? { technique: tech, count: artworks.length } 
-          : { technique: tech, count: artworks.filter(a => a.technique === tech).length }
-      )
-    );
   }, [selectedTechnique, artworks, lastUpdate]);
 
   if (loading) {
@@ -59,7 +51,7 @@ const Gallery = () => {
     <section id="gallery" className="py-20">
       <div className="container mx-auto px-4 md:px-6">
         {/* Titre de la galerie */}
-        <h2 className="text-4xl font-serif font-bold text-artist-text-light text-center mb-8">Galerie d'œuvres</h2>
+        <h2 className="text-4xl font-serif font-bold text-artist-text-light text-center mb-8">Gallery</h2>
         
         {/* Filtres par technique */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
@@ -121,43 +113,6 @@ const Gallery = () => {
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ5lw5wowAAAABJRU5ErkJggg=="
                   />
-                  {/* Sticker "VENDU" pour les œuvres non disponibles */}
-                  {!artwork.available && (
-                    <div className="absolute -right-[46px] top-[32px] z-10 rotate-45 transform origin-center w-[200px] overflow-hidden">
-                      {/* Ruban principal */}
-                      <div className="relative py-2 bg-gradient-to-r from-red-700/95 via-red-600/95 to-red-700/95 shadow-lg shadow-red-900/30 border-t border-b border-red-400/30">
-                        {/* Texture */}
-                        <div className="absolute inset-0 bg-[url('/images/ui/noise.svg')] opacity-10 mix-blend-overlay"></div>
-                        
-                        {/* Reflet brillant */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent h-1/2"></div>
-                        
-                        {/* Effet de brillance animé */}
-                        <div className="absolute inset-0 overflow-hidden">
-                          <div className="absolute inset-y-0 w-1/5 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[20deg] -translate-x-full animate-[ribbonShine_3s_ease-in-out_infinite_alternate_1s]"></div>
-                        </div>
-                        
-                        {/* Coins du ruban */}
-                        <div className="absolute -left-3 -bottom-[14px] w-3 h-14 bg-red-800/90 transform skew-y-[45deg] origin-top-right shadow-md"></div>
-                        <div className="absolute -right-3 -bottom-[14px] w-3 h-14 bg-red-800/90 transform skew-y-[-45deg] origin-top-left shadow-md"></div>
-                        
-                        {/* Texte */}
-                        <span className="relative flex justify-center items-center gap-1.5 font-serif font-bold text-white text-sm uppercase tracking-[0.2em]">
-                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-                          </svg>
-                          Vendu
-                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-artist-overlay-dark via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-lg font-serif font-medium text-white">{artwork.title}</h3>
-                    <p className="text-white/80 text-sm">{artwork.year} • {artwork.technique}</p>
-                  </div>
                 </div>
                 <div className="mt-4">
                   <h3 className="text-xl font-serif font-medium text-artist-text-light">{artwork.title}</h3>
@@ -172,7 +127,7 @@ const Gallery = () => {
         
         {filteredArtworks.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400">Aucune œuvre trouvée dans cette technique</p>
+            <p className="text-gray-400">Couldn't find any works using that technique.</p>
           </div>
         )}
       </div>
@@ -199,29 +154,6 @@ const Gallery = () => {
                 
                 {/* Effet de vignette sur l'image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none z-10"></div>
-                
-                {/* Sticker "VENDU" pour l'œuvre non disponible dans le modal */}
-                {!selectedArtwork.available && !fullscreenMode && (
-                  <div className="absolute left-8 top-8 z-20">
-                    <div className="relative px-5 py-2.5 bg-gradient-to-r from-red-700/95 via-red-600/95 to-red-700/95 rounded-md shadow-lg shadow-red-900/30 border border-red-400/40 transform hover:scale-105 transition-transform duration-300">
-                      {/* Texture */}
-                      <div className="absolute inset-0 bg-[url('/images/ui/noise.svg')] opacity-10 mix-blend-overlay rounded-md"></div>
-                      
-                      {/* Effet de brillance animé */}
-                      <div className="absolute inset-0 overflow-hidden rounded-md">
-                        <div className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[20deg] -translate-x-full animate-[ribbonShine_3s_ease-in-out_infinite_alternate_1s]"></div>
-                      </div>
-                      
-                      {/* Texte */}
-                      <span className="relative flex items-center gap-2 font-serif font-bold text-white text-sm uppercase tracking-wider">
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Vendu
-                      </span>
-                    </div>
-                  </div>
-                )}
                 
                 {/* Boutons de contrôle avec effet de hover amélioré */}
                 <div className="absolute top-4 right-4 z-20 flex space-x-3">
@@ -281,11 +213,6 @@ const Gallery = () => {
                       <h3 className="text-white/70 text-sm uppercase tracking-wider mb-1">Technique</h3>
                       <p className="text-white text-lg font-light">{selectedArtwork.technique}</p>
                     </div>
-                    
-                    <div className="transform hover:-translate-x-1 transition-transform duration-300">
-                      <h3 className="text-white/70 text-sm uppercase tracking-wider mb-1">Dimensions</h3>
-                      <p className="text-white text-lg font-light">{selectedArtwork.dimensions}</p>
-                    </div>
                   </div>
                   
                   {selectedArtwork.description && (
@@ -298,28 +225,12 @@ const Gallery = () => {
                   )}
                   
                   <div className="mt-auto flex space-x-4">
-                    {selectedArtwork.available && (
-                      <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-600/30 to-green-500/20 text-green-200 rounded-full text-sm font-medium border border-green-500/30 shadow-sm shadow-green-500/10">
-                        <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                        Disponible
-                      </span>
-                    )}
-                    {!selectedArtwork.available && (
-                      <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-700/30 via-red-600/25 to-red-700/30 text-red-200 rounded-full text-sm font-medium border border-red-500/30 shadow-sm shadow-red-500/10">
-                        {/* Indicateur de statut animé */}
-                        <span className="relative mr-2 flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-300 opacity-40"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-red-400"></span>
-                        </span>
-                        Vendu
-                      </span>
-                    )}
                     {selectedArtwork.featured && (
                       <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-artist-accent/30 to-artist-accent/20 text-artist-accent/90 rounded-full text-sm font-medium border border-artist-accent/30 shadow-sm shadow-artist-accent/10">
                         <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
                         </svg>
-                        Œuvre mise en avant
+                        Featured Work
                       </span>
                     )}
                   </div>

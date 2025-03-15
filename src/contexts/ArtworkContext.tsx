@@ -8,10 +8,8 @@ export interface Artwork {
   title: string;
   image: string;
   year: string;
-  dimensions: string;
   description?: string;
   technique: string; // remplace medium et technique est maintenant requise
-  available: boolean;
   featured?: boolean;
 }
 
@@ -78,138 +76,71 @@ export function ArtworkProvider({ children }: { children: React.ReactNode }) {
     const initialArtworks: Artwork[] = [
       {
         id: '1',
-        title: 'Aphrodite',
-        image: '/images/Aphrodite.jpg',
-        year: '2023',
-        dimensions: '60 x 80 cm',
-        description: 'Une interprétation contemporaine de la déesse de l\'amour, captant l\'essence de la beauté et de la féminité.',
-        technique: 'Peinture à l\'huile',
-        available: true,
+        title: 'The Innkeepers',
+        image: '/images/TerrariaPFP.png',
+        year: '2024',
+        description: 'Slightly modernist painting based on two outfits from the game Terraria. A tribute to my girlfriend and I.',
+        technique: 'Digital, Imitating Oil Paint',
         featured: true
       },
       {
         id: '2',
-        title: 'Entre Deux Eaux',
-        image: '/images/entre-deux-eaux.jpg',
-        year: '2022',
-        dimensions: '50 x 70 cm',
-        description: 'Un portrait évocateur explorant la dualité et l\'équilibre entre différents états d\'être.',
-        technique: 'Acrylique',
-        available: true
+        title: 'Inscryption',
+        image: '/images/Inscryption.png',
+        year: '2023',
+        description: 'Portrait of the four Magicks from the game Inscryption.',
+        technique: 'Digital',
+        featured: true
       },
       {
         id: '3',
-        title: 'Le Théâtre Intérieur',
-        image: '/images/Le-theatre-interieur.jpg',
+        title: 'Spooky Critters',
+        image: '/images/spookyGFs.png',
         year: '2023',
-        dimensions: '40 x 60 cm',
-        description: 'Une exploration des paysages intérieurs de l\'esprit, représentés comme une scène théâtrale.',
-        technique: 'Aquarelle',
-        available: false,
+        description: 'Simplistic painting of a snake and a ferret dressed up for Halloween, inside a Jack-o-Lantern.',
+        technique: 'Digital',
         featured: true
       },
       {
         id: '4',
-        title: 'Star Child',
-        image: '/images/star-child.jpg',
-        year: '2021',
-        dimensions: '30 x 40 cm',
-        description: 'Une vision onirique d\'un enfant né des étoiles, capturant l\'innocence et le mystère cosmique.',
+        title: 'Jörn Khazad',
+        image: '/images/Jorn-Khazad.png',
+        year: '2024',
+        description: 'Character portrait of a Harengon Original Character for a D&D campaign.',
         technique: 'Digital',
-        available: true
+        featured: true
       },
       {
         id: '5',
-        title: 'Hera',
-        image: '/images/Hera.jpg',
-        year: '2022',
-        dimensions: '70 x 90 cm',
-        description: 'Un hommage à la reine des dieux, symbolisant la force, la fierté et la protection.',
-        technique: 'Peinture à l\'huile',
-        available: true
+        title: 'Brogan',
+        image: '/images/Brogan.png',
+        year: '2024',
+        description: 'Character portrait of a Goliath Original Character for a D&D campaign.',
+        technique: 'Digital'
       },
       {
         id: '6',
-        title: 'Double Je',
-        image: '/images/double-je.jpg',
-        year: '2021',
-        dimensions: '45 x 55 cm',
-        description: 'Une exploration de la dualité de l\'identité et des masques que nous portons en société.',
-        technique: 'Acrylique',
-        available: false
+        title: 'O\'kkac',
+        image: '/images/Okkac.png',
+        year: '2024',
+        description: 'Character portrait of an Aarakocra Original Character for a D&D campaign.',
+        technique: 'Digital, Sketch'
       },
       {
         id: '7',
-        title: 'Fusion Cosmique',
-        image: '/images/fusion-cosmique.jpg',
-        year: '2023',
-        dimensions: '65 x 85 cm',
-        description: 'Une représentation abstraite de la fusion des énergies cosmiques, mêlant couleurs vibrantes et formes flottantes.',
-        technique: 'Peinture à l\'huile',
-        available: true,
-        featured: true
+        title: 'Griff Hardsteel',
+        image: '/images/Griff-Hardsteel.png',
+        year: '2024',
+        description: 'Character portrait of a Reborn Original Character for a D&D campaign.',
+        technique: 'Digital'
       },
       {
         id: '8',
-        title: 'Asmodeus',
-        image: '/images/Asmodeus.jpg',
-        year: '2022',
-        dimensions: '55 x 75 cm',
-        description: 'Une interprétation moderne d\'une figure mythologique, explorant les thèmes de tentation et de transformation.',
-        technique: 'Digital',
-        available: true
-      },
-      {
-        id: '9',
-        title: 'Dialogue Silencieux',
-        image: '/images/Dialogue-Silencieux.jpg',
+        title: 'Yellow Umbrella',
+        image: '/images/Yellow-Umbrella.png',
         year: '2023',
-        dimensions: '60 x 80 cm',
-        description: 'Un portrait captivant illustrant la communication non-verbale et les émotions silencieuses.',
-        technique: 'Acrylique',
-        available: false,
-        featured: true
-      },
-      {
-        id: '10',
-        title: 'Les Marginaux de la Voie Lactée',
-        image: '/images/Les-marginaux-de-la-voie-lactée.jpg',
-        year: '2021',
-        dimensions: '70 x 90 cm',
-        description: 'Une œuvre surréaliste explorant le sentiment d\'aliénation et de marginalité à l\'échelle cosmique.',
-        technique: 'Peinture à l\'huile',
-        available: true
-      },
-      {
-        id: '11',
-        title: 'Misfit Genesis',
-        image: '/images/Misfit-Genesis.jpg',
-        year: '2022',
-        dimensions: '50 x 70 cm',
-        description: 'Une création expérimentale sur l\'origine et l\'évolution de ceux qui ne rentrent pas dans les moules conventionnels.',
-        technique: 'Digital',
-        available: true
-      },
-      {
-        id: '12',
-        title: 'Nine Lives Passed',
-        image: '/images/Nine-lives-passed.jpg',
-        year: '2023',
-        dimensions: '40 x 60 cm',
-        description: 'Une réflexion mystique sur le cycle de la vie et de la mort, inspirée par le concept des neuf vies du chat.',
-        technique: 'Aquarelle',
-        available: false
-      },
-      {
-        id: '13',
-        title: 'Prélèvement à la Source',
-        image: '/images/Prelevement-a-la-source.jpg',
-        year: '2021',
-        dimensions: '55 x 75 cm',
-        description: 'Une œuvre abstraite qui joue sur les notions de prélèvement, d\'origine et d\'authenticité.',
-        technique: 'Acrylique',
-        available: true,
-        featured: true
+        description: 'A digital portrait homenaging my girlfriend and I\'s first date.',
+        technique: 'Digital'
       }
     ];
     

@@ -174,7 +174,7 @@ export function ImageSlideshow({
         >
           <Image 
             src={images[currentIndex]}
-            alt={`Œuvre de Nina Alexandre ${currentIndex + 1}`}
+            alt={`Œuvre de AileeNyx ${currentIndex + 1}`}
             fill
             priority={currentIndex === 0}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"

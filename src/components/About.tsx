@@ -19,10 +19,10 @@ const About = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative h-[700px] w-full rounded-lg shadow-2xl">
+            <div className="relative h-[200px] md:h-[484] w-full rounded-lg shadow-2xl">
               <Image
-                src="/images/selfie-nina.jpg"
-                alt="Portrait de Nina"
+                src="/images/portrait.jpg"
+                alt="Portrait of Aileen"
                 fill
                 quality={100}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
@@ -43,42 +43,27 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white">
-              À propos de <span className="text-artist-accent">l'Artiste</span>
+              About the <span className="text-artist-accent">Artist</span>
             </h2>
             
             <div className="space-y-4 text-white/90">
               <p>
-                Je m'appelle Nina, j'ai 29 ans, et je vis aujourd'hui mon rêve d'enfant : devenir artiste peintre. Après avoir tenu une pizzeria à emporter pendant 9 ans, j'ai décidé de fermer ce chapitre pour me consacrer pleinement à ma passion — l'art.
+                Hi! Name's Aileen. I'm a self-taught artist from Spain. I've learning how to bring my stories to life through art since I was a little girl.
               </p>
               <p>
-                Amoureuse des couleurs, je trouve que nos murs sont souvent trop gris, alors j'apporte de la vie et des émotions à travers chaque support qui me tombe sous la main. Mon art est un exutoire, une expression brute et sincère de ce que je ressens.
+                Currently, I've focused my carreer on programming and game development, but art has always been the centerpiece of my aspirations. I use art to inspire me in my programming projects, and use programming to bring my art to life.
               </p>
               <p>
-                Je refuse de m'enfermer dans un style précis : artiste caméléon, j'aime explorer différentes techniques et matériaux, acrylique, huile, aquarelle, feutres à alcool… tout ce qui me passe sous la main devient un outil d'expression.
-              </p>
-              <p>
-                Je puise une grande partie de mon inspiration dans l'univers graphique de Jamie Hewlett, le créateur des personnages emblématiques du groupe Gorillaz. Son style audacieux, entre bande dessinée et art urbain, nourrit ma créativité! 
-              </p>
-              <p>
-                Je vous invite à découvrir mes créations. Pour toute collaboration ou acquisition d'une œuvre, n'hésitez pas à me contacter.
+                I take particular interest in illustration, Character Design and Worldbuilding. I have a very narrative style, and every work of mine has some kind of story behind it.
               </p>
             </div>
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="border-l-2 border-artist-accent pl-4 bg-white/10 p-4 rounded-r-lg">
-                <h3 className="text-xl font-serif font-bold mb-2 text-white">Parcours</h3>
+                <h3 className="text-xl font-serif font-bold mb-2 text-white">Skills</h3>
                 <ul className="space-y-2 text-sm text-white/80">
-                  <li>Autodidacte passionnée depuis l'enfance</li>
-                  <li>Formation continue en techniques mixtes</li>
-                  <li>Entrepreneure et gérante, 2014-2023</li>
-                </ul>
-              </div>
-              <div className="border-l-2 border-artist-accent pl-4 bg-white/10 p-4 rounded-r-lg">
-                <h3 className="text-xl font-serif font-bold mb-2 text-white">Expositions</h3>
-                <ul className="space-y-2 text-sm text-white/80">
-                  <li>Exposition collective "Nuances Urbaines", 2023</li>
-                  <li>Café-galerie "L'Art en Scène", 2022</li>
-                  <li>Marché des Créateurs, éditions 2021-2023</li>
+                  <li>Knowledge using Clip Studio Paint and Adobe Creative Suite</li>
+                  <li>Game Developer; fluent in Java, Kotlin, C# and Python</li>
                 </ul>
               </div>
             </div>
@@ -88,14 +73,14 @@ const About = () => {
                 href="/contact" 
                 className="px-8 py-3 bg-artist-accent text-white rounded-md hover:bg-white hover:text-black transition-colors duration-300 font-medium flex items-center gap-2"
               >
-                <span>Me contacter</span>
+                <span>Contact me</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17l9-9"></path>
                   <path d="M8 8h8v8"></path>
                 </svg>
               </Link>
               
-              <div className="flex gap-4 mt-4 sm:mt-0">
+              {/* <div className="flex gap-4 mt-4 sm:mt-0">
                 <a 
                   href="https://www.facebook.com/profile.wonderful.gemini" 
                   className="text-artist-text-light hover:text-artist-accent transition-colors duration-300"
@@ -123,7 +108,7 @@ const About = () => {
                     <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
                   </svg>
                 </a>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>

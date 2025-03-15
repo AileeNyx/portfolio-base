@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import Image from 'next/image'
 
 interface DecorativeDotsProps {
   className?: string;
@@ -89,11 +90,13 @@ export const ArtistSignature = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1.5, duration: 0.8 }}
     >
-      <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-        <path d="M10 20C15 10 25 15 20 25C15 35 5 30 10 20Z" stroke="white" strokeWidth="0.8" />
-        <path d="M25 30C30 15 40 10 45 25" stroke="white" strokeWidth="0.8" />
-        <path d="M45 10C50 10 50 30 45 30" stroke="white" strokeWidth="0.8" />
-      </svg>
+    <Image 
+      src="/images/ui/signature.svg" 
+      alt="Artist Signature" 
+      width={60} 
+      height={40} 
+      className="opacity-80" 
+    />
     </motion.div>
   );
 }; 
