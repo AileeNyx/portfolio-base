@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   icons: {
     icon: ['/favicon.ico'],
     apple: ['/apple-touch-icon.png'],
-    
+
 
   },
 };
@@ -74,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body
         className={`${inter.variable} ${playfair.variable} antialiased text-artist-white min-h-screen`}
       >
