@@ -3,8 +3,7 @@ const nextConfig = {
   images: {},
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  distDir: 'out',
+  }
 }
 
 module.exports = nextConfig 
