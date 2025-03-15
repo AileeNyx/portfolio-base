@@ -85,8 +85,8 @@ export function ArtworkProvider({ children }: { children: React.ReactNode }) {
       },
       {
         id: '2',
-        title: 'Inscryption',
-        image: '/images/Inscryption.png',
+        title: 'Magicks',
+        image: '/images/Inscryption.jpg',
         year: '2023',
         description: 'Portrait of the four Magicks from the game Inscryption.',
         technique: 'Digital',
