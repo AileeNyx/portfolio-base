@@ -30,7 +30,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Animations et effets visuels */
 @keyframes floatAnim {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -49,13 +48,13 @@ body {
   100% { border-color: var(--artist-accent-dark); }
 }
 
-/* Animation du ruban "Vendu" */
+
 @keyframes ribbonShine {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
-/* Classes utilitaires pour les animations */
+
 .float-animation {
   animation: floatAnim 6s ease-in-out infinite;
 }
@@ -68,7 +67,7 @@ body {
   animation: borderGlow 4s ease-in-out infinite;
 }
 
-/* Effet de grain global */
+
 .grain-overlay {
   position: fixed;
   top: 0;

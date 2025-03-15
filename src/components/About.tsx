@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlaceholderImage } from '@/components/ui/placeholder-image';
 
 const About = () => {
   return (
@@ -43,7 +42,7 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white">
-              About the <span className="text-artist-accent">Artist</span>
+              About<span className="text-artist-accent"> me</span>
             </h2>
             
             <div className="space-y-4 text-white/90">
@@ -79,7 +78,6 @@ const About = () => {
                   <path d="M8 8h8v8"></path>
                 </svg>
               </Link>
-              
               {/* <div className="flex gap-4 mt-4 sm:mt-0">
                 <a 
                   href="https://www.facebook.com/profile.wonderful.gemini" 

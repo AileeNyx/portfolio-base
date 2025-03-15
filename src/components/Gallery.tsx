@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useArtworks } from '@/contexts/ArtworkContext';
 
@@ -225,6 +224,7 @@ const Gallery = () => {
                   )}
                   
                   <div className="mt-auto flex space-x-4">
+                    
                     {selectedArtwork.featured && (
                       <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-artist-accent/30 to-artist-accent/20 text-artist-accent/90 rounded-full text-sm font-medium border border-artist-accent/30 shadow-sm shadow-artist-accent/10">
                         <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
