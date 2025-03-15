@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aileenyx.com"),
-  title: "Aileenyx's Portfolio",
-  description: "Personal portfolio of Aileenyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
+  title: "AileeNyx's Portfolio",
+  description: "Personal portfolio of AileeNyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
   keywords: ["art", "artista", "paint", "games", "GameDev", "gallery", "AileeNyx"],
   authors: [{ name: "AileeNyx", url: "https://aileenyx.com" }],
   creator: "AileeNyx",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_EN",
     url: "https://aileenyx.com",
-    title: "Aileenyx's Portfolio",
-    description: "Personal portfolio of Aileenyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
-    siteName: "Aileenyx's Portfolio",
+    title: "AileeNyx's Portfolio",
+    description: "Personal portfolio of AileeNyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
+    siteName: "AileeNyx's Portfolio",
     images: [
       {
         url: "/images/portrait.jpg",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aileenyx's Portfolio",
-    description: "Personal portfolio of Aileenyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
+    title: "AileeNyx's Portfolio",
+    description: "Personal portfolio of AileeNyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!",
     creator: "AileeNyx",
     images: ["/images/portrait.jpg"],
   },
@@ -62,7 +62,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: ['/favicon.ico'],
-    apple: ['/apple-icon.png'],
+    apple: ['/apple-touch-icon.png'],
+    
+
   },
 };
 

@@ -19,7 +19,7 @@ export default function Home() {
     image: 'https://aileenyx.com/images/portrait.jpg',
     sameAs: [],
     jobTitle: 'Artist and Game Dev',
-    description: 'Personal portfolio of Aileenyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!',
+    description: 'Personal portfolio of AileeNyx, a creative artist and Game Dev. Check out my best artworks and get to know me a little better!',
     knowsAbout: ['Art', 'Painting', 'GameDev'],
     mainEntityOfPage: {
       '@type': 'WebPage',
